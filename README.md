@@ -2,7 +2,7 @@
 This is a very small side project, because I needed a custom counter app. You can add, delete and rename counters in it. And of course you can press the + button to count up. There is no count down. Sorry.
 
 # Warning
-This was made for my personal use, on a home server to use at home without any outside world access. If you put this online please keep it in mind that this app has zero security built in. The most you can do is htaccess things as described below, but I do not recommend to use this online. I made it in 2 hours and I will not update it ever. It could be a good starting point for you to make it bigger, better, safer or submit it as a homework and get a D.
+This was made for my personal use, on a home server to use at home without any outside world access. If you put this online please keep it in mind that this app has zero security built in. The most you can do is htaccess things as described below, but I do not recommend to use this online. I made it in 2 hours and I will not update it ever. It could be a good starting point for you to make it bigger, better, safer or submit it as a homework and get a D. This thing doesn't even handle any errors.
 
 # Install
 Just copy the whole thing on your web server. There is an empty "count.db" file included too. That is yor SQLite database for this. Your webserver should have PDO SQLite installed and turned on (most have it by default)

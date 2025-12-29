@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset=utf-8>
+	<title>Counters</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" type="text/css" media="screen" href="css/c.php" />
+	<link rel="shortcut icon" href="css/img/icon.png">
+	<style>
+		*{
+			box-sizing: border-box;
+		}
+		html{
+			background-color: #3B4953;
+			
+		}
+		#add{
+			position: fixed;
+			top:5px;
+			right:5px;
+			
+		}
+		#add,.countcontrols
+		{	width:30px;
+			height:30px;
+			text-align: center;
+			padding-top:5px;
+			background-color: #fefefe;
+			border: 1px solid #666;
+			border-radius: 1000px;
+			cursor:pointer
+		}
+		.countcontrols{
+			display: inline-block;
+			text-decoration: none;
+		}
+		.countercount{
+  	       border-left: 1px solid #ccc;
+   	       padding-left: 5px;
+   	     }
+		.deletecount{
+			color: red;
+			font-size: 0.8em;
+		}
+		#addform{
+			padding:20px;
+			display:none;
+		}
+		#counters{
+			width:100%;
+			padding:15px;
+			padding-top:40px;
+		}
+		#addcounterlabel{
+			color:#fefefe
+		}
+		.counter{
+			display:flex;
+			justify-content: space-evenly;
+			border: 1px solid #666;
+			border-radius: 10px;
+			background-color: #EBF4DD;
+			margin-bottom:10px;
+			padding:10px;
+		}
+		.counter div{
+			width: 400px;
+		}
+		.counteradd{
+			text-align: right;
+			width:50px;
+		
+		}
+		.renameform{
+			display:none;
+		}
+	</style>
+</head>
+<body>
+	{{errorsuccess}}
+	<div id="add">
+		+
+	</div>
+	<div id="addform">
+		<form method="post" action="?view=addcounter">
+			<label id="addcounterlabel">Name: <input type="text" name="addname"></label> <input type="submit" name="addcounter" value="Add" class="button">
+		</form>
+	</div>
+	<div id="counters">
+		{{counters}}
+	</div>
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+
+			const toggleBtn = document.getElementById('add');
+			const formDiv   = document.getElementById('addform');
+	  
+	
+			toggleBtn.addEventListener('click', () => {
+			
+				const isVisible = formDiv.style.display === 'block';
+				formDiv.style.display = isVisible ? 'none' : 'block';
+				toggleBtn.textContent = isVisible ? '+' : 'X';
+
+			});
+
+			document.addEventListener('DOMContentLoaded', function () {
+		
+				const deleteLinks = document.querySelectorAll('a.deletecount');
+
+				deleteLinks.forEach(function (link) {
+					link.addEventListener('click', function (event) {
+						
+						const ok = window.confirm('Are you sure? Last chance!');
+						if (!ok) {
+							
+							event.preventDefault();
+						}
+						
+					});
+				});
+			});
+	
+			document.body.addEventListener('click', e => {
+				
+
+				if (e.target.classList.contains('countername')) {
+					const container =e.target.closest('.counter');
+					if (!container) return;
+					const form = container.querySelector('.renameform');
+					if (form) form.style.display = 'block';
+					return;                    
+				}
+
+		
+				if (e.target.classList.contains('cancel')) {
+				
+					const form = e.target.closest('.renameform');
+					if (form) form.style.display = 'none';
+				}
+			});
+
+			const boxes = ['successbox', 'errorbox'];
+
+			boxes.forEach(id => {
+				const el = document.getElementById(id);
+				if (!el) return; 
+
+				
+				const timer = setTimeout(() => el.remove(), 5000);
+
+				
+				el.addEventListener('click', () => {
+				clearTimeout(timer);
+				el.remove();
+				});
+			});
+
+		});
+	  </script>
+</body>
+</html>

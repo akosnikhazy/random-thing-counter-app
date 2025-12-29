@@ -1,0 +1,9 @@
+{
+	"success-added":"Counter succesfully added",
+	"success-unknown":"Unspecified succeasful action happened",
+	"success-counted":"Counted!",
+	"success-deleted":"Counter deleted!",
+	"success-renamed":"Counter renamed!",
+	"no-counters":"No counters in database",
+	"no-update-yet":"No update yet"
+}

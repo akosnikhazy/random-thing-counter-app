@@ -1,0 +1,5 @@
+<div class="counter">
+	<div class="countername"><span class="countername">{{name}}</span><form method="post" action="?view=renamecounter" class="renameform"><input type="text" name="newname" value="{{name}}"><input type="hidden" name="counter_id" value="{{id}}"><input type="submit" name="renamecounter" value="rename" class="button"> <span class="button cancel">cancel</span></form> ({{lastupdate}})</div>
+	<div class="countercount">{{count}}</div>
+	<div class="counteradd"><a href="?view=addcount&counter_id={{id}}" class="countcontrols">+</a> <a href="?view=deletecounter&counter_id={{id}}" class="countcontrols deletecount">🗑</a></div>
+</div>
